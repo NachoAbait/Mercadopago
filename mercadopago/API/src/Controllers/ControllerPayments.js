@@ -5,29 +5,45 @@ export const createOrder = async (req, res) => {
     access_token:
       "TEST-948024641970932-060622-5e3e749cc08a1341b7acc3279437adbd-1393247038",
   });
-
-  const result = await mercadopago.preferences.create({
-    items: [
-      {
-        title: "Zapatilas nike",
-        unit_price: 5000,
-        currency_id: "ARS",
-        quantity: 1,
+  try {
+    const result = await mercadopago.preferences.create({
+      items: [
+        {
+          title: "Zapatilas nike",
+          unit_price: 5000,
+          currency_id: "ARS",
+          quantity: 1,
+        },
+      ],
+      back_urls: {
+        success: "http://localhost:3001/success",
+        // failure: "http://localhost:3001/failure",
+        // pending: "http://localhost:3001/pending",
       },
-    ],
-    back_urls: {
-      success: "http://localhost:3001/success",
-      failure: "http://localhost:3001/failure",
-      pending: "http://localhost:3001/pending",
-    },
-    notification_url: "",
-  });
-  console.log("hola?")
-  res.status(200).send(result.body);
+      notification_url: "https://8b15-181-231-63-46.sa.ngrok.io/webhook",
+    });
+
+    console.log("hola?");
+    res.json(result.body);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
 };
 
-export const webhook = (req, res) => {
-  console.log("entre al webhook y este es el req.qery")
-  console.log(req.query)
-  res.send("webhook");
+export const webhook = async (req, res) => {
+  try {
+    console.log(req.query);
+    const payment = req.query
+    
+    if (payment.type === "payment") {
+      const data = await mercadopago.payment.findById(payment["data.id"])
+      console.log(data)
+
+    } 
+
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
 };

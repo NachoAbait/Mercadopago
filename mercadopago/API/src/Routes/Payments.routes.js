@@ -6,7 +6,7 @@ const router = Router();
 router.post("/create-orden", createOrder);
 
 router.get("/success", (req, res) => {
-  res.send("success");
+  res.json({msg: "success"});
 });
 
 router.get("/failure", (req, res) => {
