@@ -6,7 +6,7 @@ export function createOrder(producto) {
     console.log(producto);
     try {
       var data = await axios.post(
-        `http://localhost:3001/create-orden`,
+        `/create-orden`,
         producto
       );
       console.log(data.data);

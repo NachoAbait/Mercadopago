@@ -19,7 +19,7 @@ export const createOrder = async (req, res) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:3001/success",
+        success: "https://prueba-mercadopago-production.up.railway.app/success",
         // failure: "http://localhost:3001/failure",
         // pending: "http://localhost:3001/pending",
       },
