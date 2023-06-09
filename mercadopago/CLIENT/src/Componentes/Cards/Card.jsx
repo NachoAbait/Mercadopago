@@ -39,34 +39,31 @@ export default function Card() {
 
   const init_endpoint = useSelector((state) => state.init_endpoint);
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  const handleClick = (producto) => {
     dispatch(cleanOrder());
-    console.log("este es el init-endpoint en handle");
-    console.log(init_endpoint);
-
-    dispatch(createOrder());
-    console.log("Estoy en el handle, se acaba de mandar la acción");
-    console.log(init_endpoint);
+    dispatch(createOrder(producto));
   };
 
   useEffect(() => {
     if (init_endpoint.length) {
       console.log("Redirigiendo a la URL:", init_endpoint);
-      window.location.href = init_endpoint;
+      window.open(init_endpoint)
     }
   }, [init_endpoint]);
 
 
   return (
     <div className={css.card}>
+      <div className={css.mp}>
+        <img src="https://media.a24.com/p/7b842807df15922c598c8bf51f148210/adjuntos/296/imagenes/007/959/0007959650/1200x675/smart/como-funciona-mercado-pago-conoce-sus-ventajas.jpeg" alt="" />
+      </div>
       {productos.map((producto, index) => (
         <div key={index} className={css.tarjeta}>
           <img src={producto.img} alt={producto.titulo} className={css.imagen} />
           <h3>{producto.titulo}</h3>
           <p>Talle: {producto.talle}</p>
           <p>Precio: {producto.precio}</p>
-          <button onClick={handleClick} className={css.boton}>COMPRAR</button>
+          <button onClick={() => handleClick(producto)} className={css.boton}>COMPRAR</button>
         </div>
       ))}
     </div>

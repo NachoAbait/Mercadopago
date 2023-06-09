@@ -5,12 +5,15 @@ export const createOrder = async (req, res) => {
     access_token:
       "TEST-948024641970932-060622-5e3e749cc08a1341b7acc3279437adbd-1393247038",
   });
+
+  const producto = req.body;
+
   try {
     const result = await mercadopago.preferences.create({
       items: [
         {
-          title: "Zapatilas nike",
-          unit_price: 5000,
+          title: producto.titulo,
+          unit_price: producto.precio,
           currency_id: "ARS",
           quantity: 1,
         },
@@ -23,7 +26,6 @@ export const createOrder = async (req, res) => {
       notification_url: "https://8b15-181-231-63-46.sa.ngrok.io/webhook",
     });
 
-    console.log("hola?");
     res.json(result.body);
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
@@ -33,17 +35,16 @@ export const createOrder = async (req, res) => {
 export const webhook = async (req, res) => {
   try {
     console.log(req.query);
-    const payment = req.query
-    
-    if (payment.type === "payment") {
-      const data = await mercadopago.payment.findById(payment["data.id"])
-      console.log(data)
+    const payment = req.query;
 
-    } 
+    if (payment.type === "payment") {
+      const data = await mercadopago.payment.findById(payment["data.id"]);
+      console.log(data);
+    }
 
     res.sendStatus(204);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };

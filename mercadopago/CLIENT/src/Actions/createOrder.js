@@ -1,10 +1,14 @@
 import axios from "axios";
 
-export function createOrder() {
+export function createOrder(producto) {
   return async function (dispatch) {
+    console.log("estoy en la action y este es el producto");
+    console.log(producto);
     try {
-      console.log("entre en la action");
-      var data = await axios.post(`http://localhost:3001/create-orden`);
+      var data = await axios.post(
+        `http://localhost:3001/create-orden`,
+        producto
+      );
       console.log(data.data);
 
       return dispatch({

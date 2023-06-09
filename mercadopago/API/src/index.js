@@ -2,10 +2,16 @@ import express from "express";
 import { PORT } from "./congif.js";
 import morgan from "morgan";
 import PaymentsRoutes from "./Routes/Payments.routes.js";
+import bodyParser from "body-parser";
+
+
 
 const app = express();
 app.listen(PORT);
 console.log(`Server on port: ${PORT}`);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(morgan("dev"));
 app.use((req, res, next) => {
