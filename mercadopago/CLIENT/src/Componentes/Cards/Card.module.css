@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .imagen {
@@ -39,7 +39,7 @@
   height: 100px;
   margin: auto;
   position: absolute;
-  top: 120px;
+  top: 100px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
