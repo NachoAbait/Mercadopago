@@ -1,10 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
-import { PORT } from "./congif.js";
 import morgan from "morgan";
 import PaymentsRoutes from "./Routes/Payments.routes.js";
 import bodyParser from "body-parser";
 
-
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.listen(PORT);
