@@ -1,0 +1,35 @@
+.tarjeta{
+    background-color: black;
+    width: 16%;
+    color: white;
+    margin: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: solid 2px yellow;
+    
+}
+.tarjeta:hover{
+    transform: scale(1.1);
+    transition: 1seg;
+}
+
+.card{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.imagen{
+    width: 100%;
+    height: 200px;
+    
+}
+
+.boton{
+    margin-bottom: 10px;
+    background-color: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+}
