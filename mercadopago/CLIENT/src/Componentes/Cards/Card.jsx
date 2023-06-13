@@ -63,7 +63,7 @@ export default function Card() {
           <h3>{producto.titulo}</h3>
           <p>Talle: {producto.talle}</p>
           <p>Precio: {producto.precio}</p>
-          <button onClick={() => handleClick(producto)} className={css.boton}>COMPRAR</button>
+          <button onClick={() => handleClick(producto)} className={css.boton}>AGREGAR AL CARRITO</button>
         </div>
       ))}
     </div>
