@@ -6,14 +6,13 @@ export const createOrder = async (req, res) => {
       "TEST-948024641970932-060622-5e3e749cc08a1341b7acc3279437adbd-1393247038",
   });
 
-  const producto = req.body;
-
+  
   try {
     const result = await mercadopago.preferences.create({
       items: [
         {
-          title: producto.titulo,
-          unit_price: producto.precio,
+          title: "ghfd",
+          unit_price: "sdad",
           currency_id: "ARS",
           quantity: 1,
         },
