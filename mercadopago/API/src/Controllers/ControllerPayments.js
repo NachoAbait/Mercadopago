@@ -5,18 +5,20 @@ export const createOrder = async (req, res) => {
     access_token:
       "TEST-948024641970932-060622-5e3e749cc08a1341b7acc3279437adbd-1393247038",
   });
+  const productos = req.body;
+  console.log(productos);
 
-  
   try {
     const result = await mercadopago.preferences.create({
-      items: [
-        {
-          title: "ghfd",
-          unit_price: "sdad",
+      items: productos.map((producto) => {
+        return {
+          title: producto.titulo,
+          unit_price: producto.precio,
           currency_id: "ARS",
-          quantity: 1,
-        },
-      ],
+          quantity: producto.cantidad,
+        };
+      }),
+
       back_urls: {
         success: "https://prueba-mercadopago-production.up.railway.app/success",
         // failure: "http://localhost:3001/failure",
@@ -27,7 +29,7 @@ export const createOrder = async (req, res) => {
 
     res.json(result.body);
   } catch (error) {
-    return res.status(500).json({ message: "Something goes wrong" });
+    return res.status(500).json({ mensaje: error });
   }
 };
 

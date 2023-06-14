@@ -5,7 +5,7 @@
   margin: 40px;
   border-radius: 10px;
   overflow: hidden;
-  border: solid 2px yellow;
+  border: solid 3px #4287F5;
   margin-top: 180px;
 }
 
@@ -28,9 +28,11 @@
 
 .boton {
   margin-bottom: 10px;
-  background-color: yellow;
+  background-color: #4287F5;
+  border: solid ;
   border-radius: 5px;
   cursor: pointer;
+  height:35px;
 }
 
 .mp {

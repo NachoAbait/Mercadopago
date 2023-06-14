@@ -1,6 +1,6 @@
 
 .container{
-    background-color: rgb(8, 182, 246);
+    background-color: #4287F5;
     display: flex;
     width: 60px;
     height: 60px;
@@ -10,13 +10,17 @@
     position: absolute;
     right: 130px;
     top: 30px;
+    overflow: hidden;
 }
 .container:hover{
     cursor: pointer;
 }
 .btn{
    border: none; 
-   background-color:  rgb(8, 182, 246);
+   background-color: #4287F5;
+   width: 100%;
+   height: 100%;
+
 }
 .btn:hover{
     cursor: pointer;
@@ -101,5 +105,13 @@ li{
 }
 
 .btnMP{
-    background-color: aqua;
+    background-color: #4287F5;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: large;
+}
+.btnMP:hover{
+    cursor: pointer;
 }

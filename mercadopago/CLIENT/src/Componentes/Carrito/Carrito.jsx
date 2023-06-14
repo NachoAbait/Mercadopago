@@ -12,6 +12,9 @@ export default function Carrito() {
   const dispatch = useDispatch()
 
   const init_endpoint = useSelector((state) => state.init_endpoint);
+  console.log("este es el init")
+  console.log(init_endpoint)
+
   const [isOpen, setIsOpen] = useState(false);
 
     const carrito = useSelector((state) => state.cart)
@@ -39,7 +42,7 @@ export default function Carrito() {
 
   const pagar = (producto) => {
     dispatch(cleanOrder())
-    dispatch(createOrder(producto[0]))
+    dispatch(createOrder(producto))
   };
 
   useEffect(() => {
@@ -65,7 +68,7 @@ export default function Carrito() {
                   <ul className={css.list}>
                       {carrito && carrito.map((producto) => {
                         return (
-                            <div>
+                          <div key={producto.titulo}>
                               <li>
                                 <div className={css.infoProduct}>
                                   <img src={producto.img} alt="" className={css.imgPopUp} />
@@ -91,7 +94,7 @@ export default function Carrito() {
             {carrito.length ?
               <div>
                 <div>
-                  <h2>Total: {precioTotal} </h2>
+                  <h2>Total: ${precioTotal} </h2>
                 </div>
                 <div>
                   <button onClick={() => pagar(carrito)} className={css.btnMP}> COMPRAR </button> 
